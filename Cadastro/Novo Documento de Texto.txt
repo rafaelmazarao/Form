@@ -1,0 +1,14 @@
+http://www.htmlprogressivo.net/2014/01/Como-criar-um-formulario-completo-para-um-site.html
+
+
+
+http://jqueryui.com/tabs/
+
+
+http://www.devmedia.com.br/jquery-validate-validando-formularios-com-jquery/32005
+
+
+http://blog.clares.com.br/validacao-de-formularios-com-jquery-plugin-atualizado/
+
+
+http://rogerdudler.github.io/git-guide/index.pt_BR.html

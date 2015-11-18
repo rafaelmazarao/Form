@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <!-- load bootstrap css -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+    <link href="css/css.css" rel="stylesheet" type="text/css"/> 
+    
+    <!-- load angularJS -->
+    <script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
+    <script src="js/app.js"></script>
+</head>
+
+<!-- aplicar app angular e controlador para o nosso body -->
+<body ng-app="validationApp" ng-controller="mainController">
+    <div class="container">
+        <div class="col-sm-8 col-sm-offset-2">
+            
+            <!-- PAGE HEADER -->
+            <div class="page-header"><h1>AngularJS Validação de Formulário</h1></div>
+           
+            <!-- FORM -->
+            <!-- passa a variável se nosso formulário é válida ou inválida -->
+            <!-- novalidate isso vai evitar a validação padrão do HTML5, já que vamos fazer isso usando o Angular -->
+            <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> 
+
+                <!-- NAME -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine && submitted}">
+                    <label>Name:</label>
+                    <input type="text" name="name" class="form-control" ng-model="name" required>
+                    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class"help-block">Seu nome é obrigatório </p>
+                </div>
+
+                <!-- USERNAME -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine && submitted}">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+                    <p ng-show="userForm.username.$error.minlength" class="help-block">username no minimo 3 caracteres.</p>
+                    <p ng-show="userForm.username.$error.maxlength" class="help-block">Username no maximo 8 caracteres.</p>
+                </div>
+                
+                <!-- EMAIL -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine && submitted}">
+                    <label>Email:</label>
+                    <input type="email" name="email" class="form-control" ng-model="email">
+                    <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Informe um e-mail válido.</p>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine && submitted}">
+                    <label>Password:</label>
+                    <input type="password" name="password" class="form-control" ng-model="password" required>
+                    <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Informe um password.</p>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error' : userForm.telefone.$invalid && !userForm.telefone.$pristine && submitted}">
+                    <label>Telefone:</label>
+                    <input type="telefone" name="telefone" class="form-control" ng-model="telefone" required ng-minlength="3" ng-maxlength="8">
+                    <p ng-show="userForm.telefone.$invalid && !userForm.telefone.$pristine" class="help-block">Informe um telefone.</p>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error' : userForm.endereco.$invalid && !userForm.endereco.$pristine && submitted}" >
+                    <label>Endereço:</label>
+                    <input type="endereco" name="endereco" class="form-control" ng-model="endereco" required ng-minlength="3" ng-maxlength="8">
+                    <p ng-show="userForm.endereco.$invalid && !userForm.endereco.$pristine" class="help-block"> Informe um endereço.</p>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error' : userForm.cidade.$invalid && !userForm.cidade.$pristine && submitted}">
+                    <label>Cidade:</label>
+                    <input type="cidade" name="cidade" class="form-control" ng-model="cidade" required ng-minlength="3" ng-maxlength="8">
+                    <p ng-show="userForm.cidade.$invalid && !userForm.cidade.$pristine" class="help-block"> Informe sua cidade.</p>
+                </div>
+                
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Enviar</button>
+                
+            </form>
+        </div><!-- col-sm-8 -->
+    </div><!-- /container -->
+</body>
+</html>
